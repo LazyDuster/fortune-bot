@@ -1,2 +1,10 @@
 # fortune - print a random, hopefully interesting, adage
-Discord fortune bot.
+
+## Installation
+```
+git clone https://github.com/lazyduster/zoltar
+cd zoltar
+go build -o zoltar
+```
+
+Both fortune files from OpenBSD.
