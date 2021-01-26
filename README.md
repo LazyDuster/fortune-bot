@@ -2,9 +2,9 @@
 
 ## Installation
 ```
-git clone https://github.com/lazyduster/zoltar
-cd zoltar
-go build -o zoltar
+git clone https://github.com/lazyduster/fortune-bot
+cd fortune-bot
+go build -o fortune
 ```
 
 Both fortune files from OpenBSD.
