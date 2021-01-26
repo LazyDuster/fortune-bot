@@ -33,7 +33,7 @@ func ParseFortune(f *os.File, o bool) {
 	scanner.Split(FortuneSplit)
 	for scanner.Scan() {
 		if o {
-			offensive = append(fortunes, scanner.Text())
+			offensive = append(offensive, scanner.Text())
 		} else {
 			fortunes = append(fortunes, scanner.Text())
 		}
@@ -49,6 +49,12 @@ func GetFortune() (fortune string) {
 	return fortunes[i]
 }
 
+/* Return an offensive fortune randomly */
+func GetOffensive() (fortune string) {
+	i := rand.Intn(len(offensive))
+	return offensive[i]
+}
+
 /* Upon receiving a command, bot sends a fortune */
 func SendFortune(s *discordgo.Session, m *discordgo.MessageCreate) {
 	// ignore bot messages
@@ -58,11 +64,11 @@ func SendFortune(s *discordgo.Session, m *discordgo.MessageCreate) {
 
 	if m.Content == "!fortune" {
 		msgtitle := m.Author.Username + ", it's your lucky day."
-		me := discordgo.MessageEmbed{ Title: msgtitle, Description: GetFortune(), Color: 39423 }
+		me := discordgo.MessageEmbed{ Title: msgtitle, Description: GetFortune(), Color: 0x0099FF }
 		s.ChannelMessageSendEmbed(m.ChannelID, &me)
 	} else if m.Content == "!offendme" {
 		msgtitle := m.Author.Username + ", it's your lucky day."
-		me := discordgo.MessageEmbed{ Title: msgtitle, Description: GetFortune(), Color: 14103594 }
+		me := discordgo.MessageEmbed{ Title: msgtitle, Description: GetOffensive(), Color: 0xD7342A }
 		s.ChannelMessageSendEmbed(m.ChannelID, &me)
 	}
 }
